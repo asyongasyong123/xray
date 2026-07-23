@@ -1,0 +1,81 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "access": "none",
+    "error": "none"
+  },
+  "inbounds": [
+    {
+      "port": 10001,
+      "listen": "127.0.0.1",
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password": "xray-ConFig",
+            "level": 0
+          }
+        ]
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"],
+        "routeOnly": true
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/tr-ws-xrayConFig?ed=2560"
+        },
+        "sockopt": {
+          "tcpNoDelay": true,
+          "tcpKeepAlive": true,
+          "tcpKeepAliveIdle": 25,
+          "tcpKeepAliveInterval": 12,
+          "tcpKeepAliveProbes": 3
+        }
+      }
+    },
+    {
+      "port": 10002,
+      "listen": "127.0.0.1",
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "a7b2c9d4-1e3f-4a5b-8c9d-0e1f2a3b4c5d",
+            "level": 0
+          }
+        ],
+        "decryption": "none"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"],
+        "routeOnly": true
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/vl-ws-xrayConFig?ed=2560"
+        },
+        "sockopt": {
+          "tcpNoDelay": true,
+          "tcpKeepAlive": true,
+          "tcpKeepAliveIdle": 25,
+          "tcpKeepAliveInterval": 12,
+          "tcpKeepAliveProbes": 3
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "direct",
+      "settings": {
+        "domainStrategy": "UseIPv4"
+      }
+    }
+  ]
+}
