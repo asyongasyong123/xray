@@ -27,7 +27,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: docker.io/webmasterghie/webmasterghie:latest
+          tags: docker.io/jthandg/xray-con:latest
           platforms: linux/amd64
           cache-from: ""
           cache-to: ""
