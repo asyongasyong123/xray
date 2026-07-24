@@ -4,6 +4,14 @@
     "access": "none",
     "error": "none"
   },
+  "policy": {
+    "levels": {
+      "0": {
+        "handshake": 3,
+        "connIdle": 300
+      }
+    }
+  },
   "inbounds": [
     {
       "port": 10001,
@@ -19,22 +27,24 @@
       },
       "sniffing": {
         "enabled": true,
-        "destOverride": ["http", "tls"],
+        "destOverride": ["http", "tls", "quic"],
         "routeOnly": true
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
           "path": "/tr-ws-xrayConFig?ed=2560",
-          "maxEarlyData": 2048,
+          "maxEarlyData": 1440,
           "earlyDataHeaderName": ""
         },
         "sockopt": {
           "tcpNoDelay": true,
+          "tcpFastOpen": true,
           "tcpKeepAlive": true,
-          "tcpKeepAliveIdle": 15,
-          "tcpKeepAliveInterval": 8,
-          "tcpKeepAliveProbes": 3
+          "tcpKeepAliveIdle": 60,
+          "tcpKeepAliveInterval": 30,
+          "tcpKeepAliveProbes": 3,
+          "tcpUserTimeout": 30000
         }
       }
     },
@@ -53,22 +63,24 @@
       },
       "sniffing": {
         "enabled": true,
-        "destOverride": ["http", "tls"],
+        "destOverride": ["http", "tls", "quic"],
         "routeOnly": true
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
           "path": "/vl-ws-xrayConFig?ed=2560",
-          "maxEarlyData": 2048,
+          "maxEarlyData": 1440,
           "earlyDataHeaderName": ""
         },
         "sockopt": {
           "tcpNoDelay": true,
+          "tcpFastOpen": true,
           "tcpKeepAlive": true,
-          "tcpKeepAliveIdle": 15,
-          "tcpKeepAliveInterval": 8,
-          "tcpKeepAliveProbes": 3
+          "tcpKeepAliveIdle": 60,
+          "tcpKeepAliveInterval": 30,
+          "tcpKeepAliveProbes": 3,
+          "tcpUserTimeout": 30000
         }
       }
     }
@@ -78,7 +90,7 @@
       "protocol": "freedom",
       "tag": "direct",
       "settings": {
-        "domainStrategy": "UseIPv4"
+        "targetStrategy": "UseIP"
       }
     }
   ]
