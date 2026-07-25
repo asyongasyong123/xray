@@ -4,14 +4,6 @@
     "access": "none",
     "error": "none"
   },
-  "policy": {
-    "levels": {
-      "0": {
-        "handshake": 3,
-        "connIdle": 300
-      }
-    }
-  },
   "inbounds": [
     {
       "port": 10001,
@@ -27,24 +19,22 @@
       },
       "sniffing": {
         "enabled": true,
-        "destOverride": ["http", "tls", "quic"],
+        "destOverride": ["http", "tls"],
         "routeOnly": true
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
           "path": "/tr-ws-xrayConFig?ed=2560",
-          "maxEarlyData": 1440,
+          "maxEarlyData": 2048,
           "earlyDataHeaderName": ""
         },
         "sockopt": {
           "tcpNoDelay": true,
-          "tcpFastOpen": true,
           "tcpKeepAlive": true,
-          "tcpKeepAliveIdle": 60,
-          "tcpKeepAliveInterval": 30,
-          "tcpKeepAliveProbes": 3,
-          "tcpUserTimeout": 30000
+          "tcpKeepAliveIdle": 15,
+          "tcpKeepAliveInterval": 8,
+          "tcpKeepAliveProbes": 3
         }
       }
     },
@@ -63,24 +53,22 @@
       },
       "sniffing": {
         "enabled": true,
-        "destOverride": ["http", "tls", "quic"],
+        "destOverride": ["http", "tls"],
         "routeOnly": true
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
           "path": "/vl-ws-xrayConFig?ed=2560",
-          "maxEarlyData": 1440,
+          "maxEarlyData": 2048,
           "earlyDataHeaderName": ""
         },
         "sockopt": {
           "tcpNoDelay": true,
-          "tcpFastOpen": true,
           "tcpKeepAlive": true,
-          "tcpKeepAliveIdle": 60,
-          "tcpKeepAliveInterval": 30,
-          "tcpKeepAliveProbes": 3,
-          "tcpUserTimeout": 30000
+          "tcpKeepAliveIdle": 15,
+          "tcpKeepAliveInterval": 8,
+          "tcpKeepAliveProbes": 3
         }
       }
     }
@@ -90,7 +78,7 @@
       "protocol": "freedom",
       "tag": "direct",
       "settings": {
-        "targetStrategy": "UseIP"
+        "domainStrategy": "UseIPv4"
       }
     }
   ]
