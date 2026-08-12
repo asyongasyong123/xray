@@ -12,7 +12,7 @@
       "settings": {
         "clients": [
           {
-            "password": "xray-ConFig",
+            "password": "xray-2026",
             "level": 0
           }
         ]
@@ -25,7 +25,7 @@
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/tr-ws-xrayConFig?ed=2560",
+          "path": "/tr-ws-xray?ed=2560",
           "maxEarlyData": 2048,
           "earlyDataHeaderName": ""
         },
@@ -59,7 +59,7 @@
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/vl-ws-xrayConFig?ed=2560",
+          "path": "/vl-ws-xray?ed=2560",
           "maxEarlyData": 2048,
           "earlyDataHeaderName": ""
         },
