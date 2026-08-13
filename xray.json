@@ -25,7 +25,7 @@
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/tr-ws-xray?ed=2560",
+          "path": "/tr-ws-xray",
           "maxEarlyData": 2560,
           "earlyDataHeaderName": ""
         },
@@ -55,7 +55,7 @@
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/vl-ws-xray?ed=2560",
+          "path": "/vl-ws-xray",
           "maxEarlyData": 2560,
           "earlyDataHeaderName": ""
         },
