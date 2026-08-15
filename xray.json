@@ -34,9 +34,7 @@
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/tr-ws-xray",
-          "maxEarlyData": 2560,
-          "earlyDataHeaderName": ""
+          "path": "/tr-ws-xray"
         },
         "sockopt": {
           "tcpNoDelay": true,
@@ -62,9 +60,7 @@
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/vl-ws-xray",
-          "maxEarlyData": 2560,
-          "earlyDataHeaderName": ""
+          "path": "/vl-ws-xray"
         },
         "sockopt": {
           "tcpNoDelay": true,
