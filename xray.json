@@ -43,7 +43,8 @@
           "tcpKeepAlive": true,
           "tcpKeepAliveIdle": 15,
           "tcpKeepAliveInterval": 8,
-          "tcpKeepAliveProbes": 3
+          "tcpKeepAliveProbes": 3,
+          "tcpcongestion": "bbr"
         }
       }
     },
@@ -71,7 +72,8 @@
           "tcpKeepAlive": true,
           "tcpKeepAliveIdle": 15,
           "tcpKeepAliveInterval": 8,
-          "tcpKeepAliveProbes": 3
+          "tcpKeepAliveProbes": 3,
+          "tcpcongestion": "bbr"
         }
       }
     }
@@ -80,7 +82,13 @@
     {
       "protocol": "freedom",
       "tag": "direct",
-      "settings": {"domainStrategy": "UseIPv4"}
+      "settings": {"domainStrategy": "UseIPv4"},
+      "mux": {
+        "enabled": true,
+        "concurrency": 8,
+        "xudpConcurrency": 16,
+        "xudpProxyUDP443": "reject"
+      }
     }
   ],
   "routing": {
