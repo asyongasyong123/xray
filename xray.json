@@ -20,7 +20,7 @@
       "sniffing": {"enabled": false},
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/tr-ws-xray?ed=2560"},
+        "wsSettings": {"path": "/tr-ws-xray"},
         "sockopt": {
           "tcpNoDelay": true,
           "tcpKeepAlive": true,
@@ -42,7 +42,7 @@
       "sniffing": {"enabled": false},
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/vl-ws-xray?ed=2560"},
+        "wsSettings": {"path": "/vl-ws-xray"},
         "sockopt": {
           "tcpNoDelay": true,
           "tcpKeepAlive": true,
