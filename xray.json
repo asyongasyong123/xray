@@ -1,17 +1,12 @@
 {
-  "log": {"loglevel": "warning"},
-  "dns": {
-    "servers": ["8.8.8.8", "1.1.1.1"],
-    "strategy": "UseIPv4"
+  "log": {
+    "loglevel": "warning",
+    "access": "none",
+    "error": "none"
   },
-  "policy": {
-    "levels": {
-      "0": {
-        "handshake": 2,
-        "connIdle": 300,
-        "bufferSize": 4096
-      }
-    }
+  "dns": {
+    "servers": ["8.8.8.8", "8.8.4.4"],
+    "strategy": "UseIPv4"
   },
   "inbounds": [
     {
@@ -19,16 +14,18 @@
       "listen": "127.0.0.1",
       "protocol": "trojan",
       "tag": "trojan-ws",
-      "settings": {"clients": [{"password": "xray-2026", "level": 0}]},
-      "sniffing": {"enabled": false, "destOverride": ["http", "tls"]},
+      "settings": {
+        "clients": [{"password": "xray-2026", "level": 0}]
+      },
+      "sniffing": {"enabled": false},
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/tr-ws-xray"},
+        "wsSettings": {"path": "/tr-ws-xray?ed=2560"},
         "sockopt": {
           "tcpNoDelay": true,
           "tcpKeepAlive": true,
           "tcpKeepAliveIdle": 15,
-          "tcpKeepAliveInterval": 10,
+          "tcpKeepAliveInterval": 8,
           "tcpKeepAliveProbes": 3
         }
       }
@@ -42,15 +39,15 @@
         "clients": [{"id": "a7b2c9d4-1e3f-4a5b-8c9d-0e1f2a3b4c5d", "level": 0}],
         "decryption": "none"
       },
-      "sniffing": {"enabled": false, "destOverride": ["http", "tls"]},
+      "sniffing": {"enabled": false},
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/vl-ws-xray"},
+        "wsSettings": {"path": "/vl-ws-xray?ed=2560"},
         "sockopt": {
           "tcpNoDelay": true,
           "tcpKeepAlive": true,
           "tcpKeepAliveIdle": 15,
-          "tcpKeepAliveInterval": 10,
+          "tcpKeepAliveInterval": 8,
           "tcpKeepAliveProbes": 3
         }
       }
