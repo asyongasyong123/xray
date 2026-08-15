@@ -1,73 +1,64 @@
 {
   "log": {
-    "loglevel": "warning",
-    "access": "none",
-    "error": "none"
-  },
-  "dns": {
-    "servers": ["8.8.8.8", "8.8.4.4"],
-    "strategy": "UseIPv4"
-  },
-  "policy": {
-    "levels": {
-      "0": {
-        "handshake": 2,
-        "connIdle": 300,
-        "uplinkOnly": 0,
-        "downlinkOnly": 0,
-        "bufferSize": 4096
-      }
-    }
+    "loglevel": "warning"
   },
   "inbounds": [
     {
       "port": 10001,
-      "listen": "127.0.0.1",
+      "listen": "0.0.0.0",
       "protocol": "trojan",
-      "tag": "trojan-ws",
       "settings": {
-        "clients": [{"password": "xray-2026", "level": 0}]
+        "clients": [
+          {
+            "password": "xray-2026",
+            "level": 0
+          }
+        ]
       },
       "sniffing": {
-        "enabled": false
+        "enabled": true,
+        "destOverride": ["http", "tls"]
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/tr-ws-xray"
+          "path": "/tr-ws-xray?ed=2560"
         },
         "sockopt": {
-          "tcpNoDelay": true,
           "tcpKeepAlive": true,
-          "tcpKeepAliveIdle": 15,
-          "tcpKeepAliveInterval": 8,
-          "tcpKeepAliveProbes": 3
+          "tcpKeepAliveIdle": 30,
+          "tcpKeepAliveInterval": 15,
+          "tcpKeepAliveProbes": 5
         }
       }
     },
     {
       "port": 10002,
-      "listen": "127.0.0.1",
+      "listen": "0.0.0.0",
       "protocol": "vless",
-      "tag": "vless-ws",
       "settings": {
-        "clients": [{"id": "a7b2c9d4-1e3f-4a5b-8c9d-0e1f2a3b4c5d", "level": 0}],
+        "clients": [
+          {
+            "id": "a7b2c9d4-1e3f-4a5b-8c9d-0e1f2a3b4c5d",
+            "level": 0
+          }
+        ],
         "decryption": "none"
       },
       "sniffing": {
-        "enabled": false
+        "enabled": true,
+        "destOverride": ["http", "tls"]
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/vl-ws-xray"
+          "path": "/vl-ws-xray?ed=2560"
         },
         "sockopt": {
-          "tcpNoDelay": true,
           "tcpKeepAlive": true,
-          "tcpKeepAliveIdle": 15,
-          "tcpKeepAliveInterval": 8,
-          "tcpKeepAliveProbes": 3
+          "tcpKeepAliveIdle": 30,
+          "tcpKeepAliveInterval": 15,
+          "tcpKeepAliveProbes": 5
         }
       }
     }
@@ -75,14 +66,7 @@
   "outbounds": [
     {
       "protocol": "freedom",
-      "tag": "direct",
-      "settings": {"domainStrategy": "UseIPv4"}
+      "tag": "direct"
     }
-  ],
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": [
-      {"type": "Field", "inboundTag": ["trojan-ws", "vless-ws"], "outboundTag": "direct"}
-    ]
-  }
+  ]
 }
