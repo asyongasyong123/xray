@@ -43,8 +43,7 @@
           "tcpKeepAlive": true,
           "tcpKeepAliveIdle": 15,
           "tcpKeepAliveInterval": 8,
-          "tcpKeepAliveProbes": 3,
-          "tcpcongestion": "bbr"
+          "tcpKeepAliveProbes": 3
         }
       }
     },
@@ -72,8 +71,7 @@
           "tcpKeepAlive": true,
           "tcpKeepAliveIdle": 15,
           "tcpKeepAliveInterval": 8,
-          "tcpKeepAliveProbes": 3,
-          "tcpcongestion": "bbr"
+          "tcpKeepAliveProbes": 3
         }
       }
     }
