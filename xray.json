@@ -82,13 +82,7 @@
     {
       "protocol": "freedom",
       "tag": "direct",
-      "settings": {"domainStrategy": "UseIPv4"},
-      "mux": {
-        "enabled": true,
-        "concurrency": 8,
-        "xudpConcurrency": 16,
-        "xudpProxyUDP443": "reject"
-      }
+      "settings": {"domainStrategy": "UseIPv4"}
     }
   ],
   "routing": {
