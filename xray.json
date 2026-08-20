@@ -8,6 +8,17 @@
     "servers": ["8.8.8.8", "8.8.4.4"],
     "strategy": "UseIPv4"
   },
+  "policy": {
+    "levels": {
+      "0": {
+        "handshake": 4,
+        "connIdle": 600,
+        "uplinkOnly": 0,
+        "downlinkOnly": 0,
+        "bufferSize": 4096
+      }
+    }
+  },
   "inbounds": [
     {
       "port": 10001,
@@ -17,7 +28,11 @@
       "settings": {
         "clients": [{"password": "xray-2026", "level": 0}]
       },
-      "sniffing": {"enabled": false},
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"],
+        "routeOnly": true
+      },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {"path": "/tr-ws-xray"},
@@ -39,7 +54,11 @@
         "clients": [{"id": "a7b2c9d4-1e3f-4a5b-8c9d-0e1f2a3b4c5d", "level": 0}],
         "decryption": "none"
       },
-      "sniffing": {"enabled": false},
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"],
+        "routeOnly": true
+      },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {"path": "/vl-ws-xray"},
