@@ -60,12 +60,28 @@
       "protocol": "freedom",
       "tag": "direct",
       "settings": {"domainStrategy": "UseIPv4"}
+    },
+    {
+      "protocol": "blackhole",
+      "tag": "blocked",
+      "settings": {
+        "response": {"type": "none"}
+      }
     }
   ],
   "routing": {
     "domainStrategy": "IPIfNonMatch",
     "rules": [
-      {"type": "Field", "inboundTag": ["trojan-ws", "vless-ws"], "outboundTag": "direct"}
+      {
+        "type": "field",
+        "domain": ["geosite:category-ads-all"],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "inboundTag": ["trojan-ws", "vless-ws"],
+        "outboundTag": "direct"
+      }
     ]
   }
 }
