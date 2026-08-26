@@ -1,10 +1,10 @@
 #!/bin/sh
 set -e
 
-echo "✅ Starting Xray..."
+echo "✅ Starting Xray core..."
 xray run -c /etc/xray/config.json &
 
-sleep 2  # ✅ Short wait — no lag
+sleep 2
 
 echo "✅ Starting Nginx..."
-nginx -g "daemon off;"
+exec nginx -g "daemon off;"
