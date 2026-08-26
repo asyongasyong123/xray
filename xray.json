@@ -8,6 +8,15 @@
     "servers": ["8.8.8.8", "8.8.4.4"],
     "strategy": "UseIPv4"
   },
+  "policy": {
+    "levels": {
+      "0": {
+        "handshake": 4,
+        "connIdle": 3600,
+        "bufferSize": 524288
+      }
+    }
+  },
   "inbounds": [
     {
       "port": 10001,
