@@ -16,7 +16,7 @@
       "0": {
         "handshake": 4,
         "connIdle": 3600,
-        "bufferSize": 524288
+        "bufferSize": 512
       }
     }
   },
