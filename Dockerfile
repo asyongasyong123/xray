@@ -15,7 +15,7 @@ RUN apk add --no-cache nginx wget unzip ca-certificates tzdata && \
     rm -rf /tmp/xray* /etc/nginx/conf.d/* /etc/nginx/http.d/*
 
 # Copy configs
-COPY config.json /etc/xray/config.json
+COPY xray.json /etc/xray/config.json
 COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 8080
