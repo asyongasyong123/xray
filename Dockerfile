@@ -3,7 +3,7 @@ FROM alpine:3.20
 ENV XRAY_VERSION=1.8.24
 ENV XRAY_LOCATION_ASSET=/usr/local/share/xray
 
-# Install dependencies, setup directories, and download Xray + DAT files
+# Install dependencies, setup directories, ug download Xray + DAT files
 RUN apk add --no-cache nginx wget unzip ca-certificates tzdata && \
     mkdir -p /usr/local/share/xray /run/nginx /etc/xray && \
     wget -qO /tmp/xray.zip https://github.com/XTLS/Xray-core/releases/download/v${XRAY_VERSION}/Xray-linux-64.zip && \
@@ -15,7 +15,7 @@ RUN apk add --no-cache nginx wget unzip ca-certificates tzdata && \
     rm -rf /tmp/xray* /etc/nginx/conf.d/* /etc/nginx/http.d/*
 
 # Copy configs
-COPY xray.json /etc/xray/config.json
+COPY config.json /etc/xray/config.json
 COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 8080
