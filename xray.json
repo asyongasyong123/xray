@@ -105,9 +105,7 @@
       {
         "type": "field",
         "domain": [
-          "geosite:category-ads-all",
-          "geosite:malware",
-          "geosite:phishing"
+          "geosite:category-ads-all"
         ],
         "outboundTag": "blocked"
       },
