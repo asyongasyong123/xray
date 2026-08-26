@@ -5,8 +5,11 @@
     "error": "none"
   },
   "dns": {
-    "servers": ["8.8.8.8", "8.8.4.4"],
-    "strategy": "UseIPv4"
+    "servers": [
+      "https://1.1.1.1/dns-query",
+      "https://dns.google/dns-query"
+    ],
+    "queryStrategy": "UseIPv4"
   },
   "policy": {
     "levels": {
@@ -26,7 +29,11 @@
       "settings": {
         "clients": [{"password": "xray-2026", "level": 0}]
       },
-      "sniffing": {"enabled": false},
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"],
+        "routeOnly": true
+      },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {"path": "/tr-ws-xray"},
@@ -49,7 +56,11 @@
         "clients": [{"id": "a7b2c9d4-1e3f-4a5b-8c9d-0e1f2a3b4c5d", "level": 0}],
         "decryption": "none"
       },
-      "sniffing": {"enabled": false},
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"],
+        "routeOnly": true
+      },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {"path": "/vl-ws-xray"},
@@ -83,7 +94,21 @@
     "rules": [
       {
         "type": "field",
-        "domain": ["geosite:category-ads-all"],
+        "protocol": ["bittorrent"],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "domain": [
+          "geosite:category-ads-all",
+          "geosite:malware",
+          "geosite:phishing"
+        ],
         "outboundTag": "blocked"
       },
       {
