@@ -12,8 +12,8 @@
     "levels": {
       "0": {
         "handshake": 4,
-        "connIdle": 300,
-        "bufferSize": 512
+        "connIdle": 3600,
+        "bufferSize": 524288
       }
     }
   },
