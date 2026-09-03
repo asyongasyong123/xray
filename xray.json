@@ -1,6 +1,6 @@
 {
   "log": {
-    "loglevel": "warning"
+    "loglevel": "none"
   },
   "inbounds": [
     {
@@ -8,11 +8,22 @@
       "listen": "127.0.0.1",
       "protocol": "trojan",
       "settings": {
-        "clients": [{"password": "xray-2026"}]
+        "clients": [
+          {
+            "password": "xray-2026"
+          }
+        ]
       },
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/tr-ws-xray"}
+        "wsSettings": {
+          "path": "/tr-ws-xray"
+        },
+        "sockopt": {
+          "tcpKeepAliveIdle": 5,
+          "tcpKeepAliveInterval": 5,
+          "tcpNoDelay": true
+        }
       }
     },
     {
@@ -20,12 +31,23 @@
       "listen": "127.0.0.1",
       "protocol": "vless",
       "settings": {
-        "clients": [{"id": "a7b2c9d4-1e3f-4a5b-8c9d-0e1f2a3b4c5d"}],
+        "clients": [
+          {
+            "id": "a7b2c9d4-1e3f-4a5b-8c9d-0e1f2a3b4c5d"
+          }
+        ],
         "decryption": "none"
       },
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/vl-ws-xray"}
+        "wsSettings": {
+          "path": "/vl-ws-xray"
+        },
+        "sockopt": {
+          "tcpKeepAliveIdle": 5,
+          "tcpKeepAliveInterval": 5,
+          "tcpNoDelay": true
+        }
       }
     }
   ],
